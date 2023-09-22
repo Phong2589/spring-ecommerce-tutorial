@@ -3,7 +3,7 @@ name: Example workflow using Snyk
 on: push
 jobs:
   security:
-    runs-on: QIPDNS116
+    runs-on: self-hosted
     steps:
     - name: test snyk
       working-directory: /opt/snyk/
