@@ -1,11 +1,17 @@
- 
 name: Example workflow using Snyk
 on: push
 jobs:
   security:
     runs-on: self-hosted
     steps:
-    - uses: actions/checkout@master
-    - name: test snyk
-      working-directory: /opt/snyk/
-      run: pwd
+    - name: pull source
+      working-directory: /opt/snyk
+      run: |
+        git fetch --all
+        git clean -fd
+        git clean -f -X
+        git checkout master
+        git reset --hard origin/master
+        git pull --rebase=false origin --prune --verbose
+        git status
+        pwd
