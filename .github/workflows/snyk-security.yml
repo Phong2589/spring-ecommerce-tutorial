@@ -5,6 +5,13 @@ jobs:
     runs-on: self-hosted
     steps:
     - name: pull source
-      working-directory: /opt/snyk
-      run:
-        pwd
+      working-directory: /opt/snyk/spring-ecommerce-tutorial
+      run: |
+        git fetch --all
+        git clean -fd
+        git clean -f -X
+        git checkout master
+        git reset --hard origin/master
+        git pull --rebase=false origin --prune --verbose
+        git status
+        snyk test
