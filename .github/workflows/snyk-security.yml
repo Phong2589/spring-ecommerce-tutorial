@@ -4,7 +4,7 @@ jobs:
   security:
     runs-on: QIPDNS116
     steps:
-      - uses: actions/checkout@master
+      - uses: Phong2589/spring-ecommerce-tutorial/.github/workflows/snyk-security.yml@master
       - name: Run Snyk to check for vulnerabilities
         run: |
             /opt/snyk/snyk test
